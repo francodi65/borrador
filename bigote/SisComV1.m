@@ -70,14 +70,21 @@ figure
 deltaw= (2*pi)/(length(RespFiltro)-1);
 w=-pi:deltaw:pi;
 f=(w/(2*pi))*FreqSymbol*10;
-plot(f,20*log10(RespFiltro))
+plot(f,10*log10(abs(RespFiltro)))
 title('Respuesta en Frecuencia del Filtro')
 xlabel('Frecuencia [Hz]')
 ylabel('Atenuación [dB]')
 grid on
 figure
-freqz(SRRCFilter)
-
+h= freqz(SRRCFilter);
+deltaw= (pi)/(length(h)-1);
+w=0:deltaw:pi;
+f=(w/(2*pi))*FreqSymbol*10;
+plot(f,20*log10(abs(h)))
+grid on
+title('Respuesta en Frecuencia del Filtro')
+xlabel('Frecuencia [Hz]')
+ylabel('Atenuación [dB]')
 
 
 
